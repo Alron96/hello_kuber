@@ -1,7 +1,7 @@
 FROM maven:3.8.4-openjdk-17 as builder
 WORKDIR /opt/image_name
-COPY user-service/pom.xml ./
-COPY ./user-service/src ./src
+COPY pom.xml ./
+COPY ./src ./src
 RUN mvn clean install
 
 FROM maven:3.8.4-openjdk-17
