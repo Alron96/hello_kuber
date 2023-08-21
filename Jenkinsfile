@@ -6,7 +6,7 @@ pipeline {
         IMAGE_NAME = 'image_name'
         LOGIN = 'maksim0101'
         PASSWORD = 'dckr_pat_7-oIeNOGTsy0YYjOfeDW2pjVUoc'
-        URL_PUSH = 'maksim0101/hello_test:latest'
+        URL_PUSH = 'maksim0101/hello_test'
     }
 
     stages {
@@ -19,7 +19,7 @@ pipeline {
         stage('Push Docker image to the container registry on Docker Hub') {
             steps {
                 sh 'docker login -u $LOGIN -p $PASSWORD'
-                sh 'docker push $URL_PUSH'
+                sh 'docker push $URL_PUSH:$IMAGE_TAG'
             }
         }
 
