@@ -13,7 +13,7 @@ pipeline {
         stage('Build new Docker image in Jenkins Node') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-                sh 'docker tag $IMAGE_NAME $URL_PUSH/$IMAGE_NAME:$IMAGE_TAG'
+                sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
             }
         }
 
