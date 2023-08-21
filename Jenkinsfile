@@ -31,5 +31,22 @@ pipeline {
                 sh 'docker images'
             }
         }
+
+//         stage('Helm operations') {
+//             steps {
+//                 sh 'helm registry login -u string -p string' // Заполнить имя и пароль профиля helm
+//                 sh 'helm install $DEPLOY_NAME $CHART_HELM_DIR_NAME'
+//                 sh 'helm delete $DEPLOY_NAME' // удалить нод...или под (надо проверить)
+//             }
+//         }
+//
+//         stage('Cluster statistic') {
+//             steps {
+//                 sh 'helm list' // Получим список запущенных сервисов в единичном экземпляре
+//                 sh 'kubectl get deploy' // Получим упрощенный список с минимально необходимой информацией
+//                 sh 'kubectl get pods' // Получаем полный список подов
+//                 sh 'kubectl get svc' // Чтобы узнать кластерный и исходящий IP
+//             }
+//         }
     }
 }
