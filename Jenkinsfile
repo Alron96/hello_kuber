@@ -4,8 +4,8 @@ pipeline {
     environment {
         IMAGE_TAG = '0.1'
         IMAGE_NAME = 'image_name'
-        LOGIN = credentials('docker_cred')
-        PASSWORD = 'dckr_pat_7-oIeNOGTsy0YYjOfeDW2pjVUoc'
+        LOGIN = 'maksim0101'
+        PASSWORD = credentials('docker_hub')
         URL_PUSH = 'maksim0101/hello_test'
     }
 
@@ -24,23 +24,23 @@ pipeline {
             }
         }
 
-//         stage('Push Docker image to the container registry on Docker Hub') {
-//             steps {
-//                 echo "Pushing image to docker-hub"
-//                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
-//                 sh 'docker login --username $LOGIN --password-stdin'
-//                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
-//             }
-//         }
-
         stage('Push Docker image to the container registry on Docker Hub') {
-            withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
+            steps {
                 echo "Pushing image to docker-hub"
                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
-                sh 'docker login --username $dockerUser --password $dockerKey'
+                sh 'docker login -u $LOGIN -p $PASSWORD'
                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
             }
         }
+
+//         stage('Push Docker image to the container registry on Docker Hub') {
+//             withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
+//                 echo "Pushing image to docker-hub"
+//                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
+//                 sh 'docker login --username $dockerUser --password $dockerKey'
+//                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
+//             }
+//         }
 
         stage('Remove unused Docker image from Jenkins Node') {
             steps {
