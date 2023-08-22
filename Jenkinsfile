@@ -13,6 +13,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                echo "${registryName}"
                 checkout scm
             }
         }
@@ -21,7 +22,7 @@ pipeline {
             steps {
                 echo "Starting build image..."
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-                echo "${registryName}"
+
             }
         }
 
