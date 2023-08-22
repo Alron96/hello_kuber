@@ -13,7 +13,9 @@ pipeline {
 
     stages {
         stage ('Check') {
-            echo '$CRED'
+            steps {
+                echo '$CRED'
+            }
         }
 
 
