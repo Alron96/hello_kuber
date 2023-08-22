@@ -5,8 +5,9 @@ pipeline {
         IMAGE_TAG = '0.1'
         IMAGE_NAME = 'image_name'
         LOGIN = 'maksim0101'
-        PASSWORD = credentials('docker_hub')
+//         PASSWORD = credentials('docker_hub')
         URL_PUSH = 'maksim0101/hello_test'
+        TEXT = credentials('registryName')
     }
 
     stages {
@@ -21,17 +22,18 @@ pipeline {
             steps {
                 echo "Starting build image..."
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                echo $TEXT
             }
         }
 
-        stage('Push Docker image to the container registry on Docker Hub') {
-            steps {
-                echo "Pushing image to docker-hub"
-                sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
-                sh 'docker login -u $LOGIN -p $PASSWORD'
-                sh 'docker push $URL_PUSH:$IMAGE_TAG'
-            }
-        }
+//         stage('Push Docker image to the container registry on Docker Hub') {
+//              steps {
+//                  echo "Pushing image to docker-hub"
+//                  sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
+//                  sh 'docker login -u $LOGIN -p $PASSWORD'
+//                  sh 'docker push $URL_PUSH:$IMAGE_TAG'
+//              }
+//          }
 
 //         stage('Push Docker image to the container registry on Docker Hub') {
 //             withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
