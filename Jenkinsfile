@@ -15,13 +15,13 @@ pipeline {
             echo "${registryName}"
         }
 
-        stage('Build new Docker image in Jenkins Node') {
-            steps {
-                echo "Starting build image..."
-                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-
-            }
-        }
+//         stage('Build new Docker image in Jenkins Node') {
+//             steps {
+//                 echo "Starting build image..."
+//                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+//
+//             }
+//         }
 
 //         stage('Push Docker image to the container registry on Docker Hub') {
 //              steps {
