@@ -10,10 +10,10 @@ pipeline {
     }
 
     stages {
-
         script {
             echo "${registryName}"
         }
+
 
 //         stage('Build new Docker image in Jenkins Node') {
 //             steps {
@@ -41,14 +41,14 @@ pipeline {
 //             }
 //         }
 
-        stage('Remove unused Docker image from Jenkins Node') {
-            steps {
-                echo "Remove image after pushing"
-                sh 'docker images'
-                sh 'docker rmi -f $IMAGE_NAME:$IMAGE_TAG'
-                sh 'docker images'
-            }
-        }
+//         stage('Remove unused Docker image from Jenkins Node') {
+//             steps {
+//                 echo "Remove image after pushing"
+//                 sh 'docker images'
+//                 sh 'docker rmi -f $IMAGE_NAME:$IMAGE_TAG'
+//                 sh 'docker images'
+//             }
+//         }
 
 //         stage('Helm operations') {
 //             steps {
