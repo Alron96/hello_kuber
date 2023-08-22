@@ -9,10 +9,12 @@ pipeline {
         URL_PUSH = 'maksim0101/hello_test'
     }
 
-    stages {
-        script {
-            echo "$registryName"
-        }
+    script {
+        echo "$registryName"
+            }
+
+//     stages {
+
 
 
 //         stage('Build new Docker image in Jenkins Node') {
@@ -79,5 +81,5 @@ pipeline {
 //
 //             }
 //         }
-    }
+//     }
 }
