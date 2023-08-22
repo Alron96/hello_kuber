@@ -14,7 +14,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "${registryName}"
-                checkout scm
             }
         }
 
