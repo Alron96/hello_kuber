@@ -11,7 +11,7 @@ pipeline {
 
     stages {
         script {
-            echo "${registryName}"
+            echo "$registryName"
         }
 
 
