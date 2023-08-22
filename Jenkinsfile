@@ -5,15 +5,19 @@ pipeline {
         IMAGE_TAG = '0.1'
         IMAGE_NAME = 'image_name'
         LOGIN = 'maksim0101'
-//         PASSWORD = credentials('docker_hub')
+        CRED = credentials('8b039a00-a03d-4f02-b52d-918e3d660922')
         URL_PUSH = 'maksim0101/hello_test'
     }
 
     script {
-        echo "$registryName"
+        echo "$CRED"
             }
 
-//     stages {
+    stages {
+        stage ('Check') {
+            echo "$CRED"
+        }
+
 
 
 
@@ -81,5 +85,5 @@ pipeline {
 //
 //             }
 //         }
-//     }
+    }
 }
