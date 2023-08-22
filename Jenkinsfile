@@ -38,14 +38,14 @@ pipeline {
 //              }
 //          }
 
-//         stage('Push Docker image to the container registry on Docker Hub') {
-//             withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
-//                 echo "Pushing image to docker-hub"
+        stage('Push Docker image to the container registry on Docker Hub') {
+            withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
+                echo "Pushing image to docker-hub"
 //                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
-//                 sh 'docker login --username $dockerUser --password $dockerKey'
+                sh 'docker login -u $CRED -p $CRED_PSW'
 //                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
-//             }
-//         }
+            }
+        }
 
 //         stage('Remove unused Docker image from Jenkins Node') {
 //             steps {
