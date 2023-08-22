@@ -24,11 +24,20 @@ pipeline {
             }
         }
 
+//         stage('Push Docker image to the container registry on Docker Hub') {
+//             steps {
+//                 echo "Pushing image to docker-hub"
+//                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
+//                 sh 'docker login --username $LOGIN --password-stdin'
+//                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
+//             }
+//         }
+
         stage('Push Docker image to the container registry on Docker Hub') {
-            steps {
+            withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]) {
                 echo "Pushing image to docker-hub"
                 sh 'docker tag $IMAGE_NAME $URL_PUSH:$IMAGE_TAG'
-                sh 'docker login --username $LOGIN --password-stdin'
+                sh 'docker login --username $dockerUser --password $dockerKey'
                 sh 'docker push $URL_PUSH:$IMAGE_TAG'
             }
         }
