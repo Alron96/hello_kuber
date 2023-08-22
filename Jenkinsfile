@@ -7,7 +7,6 @@ pipeline {
         LOGIN = 'maksim0101'
 //         PASSWORD = credentials('docker_hub')
         URL_PUSH = 'maksim0101/hello_test'
-        TEXT = credentials('registryName')
     }
 
     stages {
@@ -22,7 +21,7 @@ pipeline {
             steps {
                 echo "Starting build image..."
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-                echo $TEXT
+                echo ${registryName}
             }
         }
 
