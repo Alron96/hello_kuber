@@ -11,7 +11,7 @@ pipeline {
 
     stages {
 
-        script('Checkout') {
+        script {
             echo "${registryName}"
         }
 
