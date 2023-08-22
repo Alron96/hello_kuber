@@ -11,10 +11,8 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            script {
-                echo "${registryName}"
-            }
+        script('Checkout') {
+            echo "${registryName}"
         }
 
         stage('Build new Docker image in Jenkins Node') {
