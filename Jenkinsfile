@@ -9,13 +9,11 @@ pipeline {
         URL_PUSH = 'maksim0101/hello_test'
     }
 
-    script {
-        echo "$CRED"
-            }
+
 
     stages {
         stage ('Check') {
-            echo "$CRED"
+            echo '$CRED'
         }
 
 
